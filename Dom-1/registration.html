@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+</head>
+<body>
+	<input type="text" name="name" id="name">
+	<select id="gender">
+		<option value="">--</option>
+		<option value="male">M</option>
+		<option value="female">F</option>
+	</select>
+	<input type="text" name="email" id="email">
+	<input type="text" name="mobile" id="mobile">
+	<hr>
+	<h1 id="dName">NAME</h1>
+	<h2 id="dGender">GENDER</h2>
+	<h3 id="dEmail">EMAIL</h3>
+	<h4 id="dMobile">MOBILE</h4>
+	<hr>
+	<button onclick="showName()">NAME</button>
+	<button onclick="showGender()">GENDER</button>
+	<button onclick="showEmail()">EMAIL</button>
+	<button onclick="showMobile()">MOBILE</button>
+	<button onclick="resetForm()">RESET FORM</button>
+	<button onclick="resetDisplay()">RESET DISPLAY</button>
+	<script type="text/javascript">
+		function showName() {
+			let a = document.getElementById("dName")
+            let b = document.getElementById("name")
+            a.innerText = b.value;
+		}
+
+		function showGender() {
+			let a = document.getElementById("gender");
+            let b = document.getElementById("dGender");
+            b.innerText = a.value;
+		}
+
+		function showEmail() {
+			let a = document.getElementById("dEmail");
+            let b = document.getElementById("email");
+            a.innerText = b.value;
+		}
+
+		function showMobile() {
+			let a = document.getElementById("dMobile");
+            let b = document.getElementById("mobile");
+            a.innerText = b.value;
+		}
+
+		function resetForm() {
+			let a = document.getElementById("name");
+            a.value = "";
+            let b = document.getElementById("gender");
+            b.value = "";
+            let c = document.getElementById("email");
+            c.value = "";
+            let d = document.getElementById("mobile");
+            d.value = "";
+		}
+
+		function resetDisplay() {
+			let a = document.getElementById("dName");
+            a.innerText = "";
+            let b = document.getElementById("dGender");
+            b.innerText = "";
+            let c = document.getElementById("dEmail");
+            c.innerText = "";
+            let d = document.getElementById("dMobile");
+            d.innerText = "";
+		}
+	</script>
+</body>
