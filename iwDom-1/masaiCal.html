@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai Calculator</title>
+    <style>
+        h2{
+            color: teal;
+            font-size: 34px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #cont{
+            height: 375px;
+            width: 25%;
+            /* border: 1px solid red; */
+            margin: auto;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin-top: 100px;
+            padding-top: 10px;
+        }
+        #display{
+            height:50px;
+            width:80%;
+            border:1px solid green;
+            margin: auto;
+            margin-top: 30px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        #keypad{
+            height: auto;
+            width:80%;
+            /* border:1px solid blue; */
+            margin: auto;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(4,22%);
+            grid-template-rows: repeat(4,50px);
+            gap: 5px;
+            justify-content: space-around;
+        }
+        #keypad > div{
+           /* border: 1px solid green; */
+           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+           border-radius: 10px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           font-weight: bolder;
+        }
+        .operator{
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <h2>Masai Calculator</h2>
+    <div id="cont">
+            <div id="display"><h1></h1></div>
+        <div id="keypad">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div class="operator">+</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div class="operator">-</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div class="operator">*</div>
+            <div class="reset" style="background-color: red;">C</div>
+            <div>0</div>
+            <div class="operator" class="equalTo">=</div>
+            <div class="operator">/</div>
+        </div>
+    </div>
+</body>
+<script>
+    let displayBtn = document.querySelector("#display > h1");
+    let keypadBtn = document.querySelectorAll("#keypad > div");
+    let num = "";
+    for(let i = 0; i < keypadBtn.length; i++){
+        keypadBtn[i].addEventListener("click", calculate)
+    }
+    
+    function calculate(event){
+        let para = event.target.innerText;
+        if(para == "C"){
+            num = "";
+            displayBtn.innerText = "";
+        }
+
+        else if(para == "="){
+            displayBtn.innerText = eval(num);
+        }
+        else{
+            num += para;
+            displayBtn.innerText = num;
+        }
+    }
+</script>
+</html>

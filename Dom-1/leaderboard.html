@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIN & MAX LEADERBOARD (DOM)</title>
+    <style>
+        #head{
+            height: 100px;
+            width: 60%;
+            /* border: 1px solid red; */
+            margin: auto;
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #head > div {
+            /* border: 1px solid blue; */
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        #subHead{
+            width: 60%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        #subHead > div {
+            margin-left: 25px;
+            margin-right: 25px;
+            font-size: 25px;
+        }
+
+        #scoreText{
+            width: 60%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            font-size: 50px;
+        }
+        #score{
+            height: 100px;
+            width: 25%;
+            /* border: 5px solid black; */
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+        }
+        #cont{
+            height: 400px;
+            width: 25%;
+            /* border: 1px solid green; */
+            margin: auto;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 30%);
+            grid-template-rows: repeat(4, 22%);
+            gap: 10px;
+        }
+        #cont > div{
+            /* border: 1px solid black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+        #enter{
+            height: 100px;
+            width: 25%;
+            margin: auto;
+            margin-top: 15px;
+            /* border: 1px solid green; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            color: white;
+        }
+        .green{
+            background-color: greenyellow;
+        }
+        .orange{
+            background-color: orangered;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="head">
+        <div style="background-color: red;" id="minNum">43</div>
+        <div style="background-color: green;" id="maxNum">2019</div>
+    </div>
+    <div id="subHead">
+        <div>MIN</div>
+        <div>MAX</div>
+    </div>
+    <div id="scoreText">score</div>
+    <div id="score" style="background-color: grey;">#</div>
+    <div id="cont">
+        <div class="green">1</div>
+        <div class="orange">2</div>
+        <div class="green">3</div>
+        <div class="orange">4</div>
+        <div class="orange">5</div>
+        <div class="orange">6</div>
+        <div class="green">7</div>
+        <div class="orange">8</div>
+        <div class="green">9</div>
+        <div></div>
+        <div style="background-color: purple;">0</div>
+        <div></div>
+    </div>
+    <div id="enter" style="background-color: black;">ENTER</div>
+</body>
+<script>
+    let keyPad = document.querySelectorAll("#cont > div");
+    let minNumber = document.querySelector("#minNum");
+    let maxNumber = document.querySelector("#maxNum");
+    let scoreBoard = document.querySelector("#score");
+    let enterBtn = document.querySelector("#enter");
+    let firstNum = "";
+    let miniNum = Number(minNumber.innerText);
+    let maxiNum = Number(maxNumber.innerText);
+
+    for(let i = 0; i < keyPad.length; i++){
+        keyPad[i].addEventListener("click", function(){ 
+            firstNum += keyPad[i].innerText;
+            scoreBoard.innerText = firstNum;
+        })  
+    }
+    enterBtn.addEventListener("click", function(){
+        if(firstNum < miniNum){
+            minNumber.innerText = firstNum;
+            scoreBoard.innerText = "";
+            firstNum = "";
+        }
+        else if(firstNum > maxiNum){
+            maxNumber.innerText = firstNum;
+            scoreBoard.innerText = "";
+            firstNum = "";
+            }
+    })
+</script>
+</html>
