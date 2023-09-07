@@ -1,0 +1,44 @@
+/* Fill CSS here */
+h1{
+    text-align: center;
+    color: teal;
+    text-decoration: underline;
+    margin-bottom: 50px;
+}
+div{
+    width: 70%;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between;
+}
+table{
+    padding-left: 50px;
+    margin: auto;
+    text-align: center;
+}
+
+thead{
+    background-color: teal;
+    color: white;
+}
+
+form{
+    padding: 20px;
+    line-height: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-left: 50px;
+}
+
+#sub{
+    background-color: teal;
+    border-radius: 20px;
+    color: white;
+    margin-top: 10px;
+    border: none;
+    width: 80%;
+    margin: auto;
+}
+
+body{
+    font-style: 'poppins', italic ;
+}
