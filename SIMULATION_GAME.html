@@ -22,35 +22,32 @@
             return newSpeed;
         }
         Vehicle.prototype.refuel = function(){
-            console.log("refueling")
+            console.log(this.model + " is refueling")
         }
 
-        let car = new Vehicle("tata", "Safari", 50,"Diesel")
-        car.numberOfWheels = 4;
-        car.honk = function(){
-        console.log("Peep...Peep")
+        function car(brand, model, speed, fuelType, numberOfWheels){
+            Vehicle.call(this, brand, model, speed, fuelType);
+            this.numberOfWheels = numberOfWheels;
+        }
+        car.prototype = Object.create(Vehicle.prototype)
+        car.prototype.honk = function(){
+            console.log(this.model + " is honking");
         }
         
-        function Airplane(brand, model, speed, fuelType, numberOfEngines, hasLandingGear){
-            Vehicle.call(this, brand, model, speed, fuelType);
-            this.numberOfEngines = numberOfEngines;
-            this.hasLandingGear = hasLandingGear;
-        }
-        Airplane.prototype.takeOff = function(){
-            console.log("the airplane is taking off")
-        }
-        Object.setPrototypeOf(Airplane.prototype, Vehicle.prototype)
-
-        let Aircraft = new Airplane("boeing", "AHDL", 500, "aeroFuel", 10, 5)
-        Object.setPrototypeOf(Airplane.prototype, car)
-
-
-        console.log(Aircraft.accelerate(100))
+        let car1 = new car("Tata", "Safari", "250", "Diesel", 4)
         console.log(car)
-        console.log(car.accelerate(20))
-        console.log(car.brake(30))
-        car.honk()
-        Aircraft.honk()
+       function Airplane(brand, model, speed, fuelType, numberOfEngines, hasLandingGear){
+        Vehicle.call(this, brand, model, speed, fuelType);
+        this.numberOfEngines = numberOfEngines;
+        this.hasLandingGear = hasLandingGear;
+       }
+       Airplane.prototype = Object.create(Vehicle.prototype)
+       Airplane.prototype.takeOff = function(){
+        console.log(this.model + " is taking off")
+       }
+       let airplane1 = new Airplane("boeing", "A380_Airbus", 1000, "aerosols", 2, 1)
+       airplane1.takeOff()
+
     </script>
 </body>
 </html>
