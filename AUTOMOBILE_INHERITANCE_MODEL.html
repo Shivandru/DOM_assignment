@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTOMOBILE INHERITANCE MODEL</title>
+</head>
+<body>
+    <script>
+        function tataSafari(modelNumber, color, engine, capacity, dimensions, kerbWeight){
+            let obj = {};
+            obj.modelNumber = modelNumber;
+            obj.color = color;
+            obj.engine = engine;
+            obj.capacity = capacity;
+            obj.dimensions = dimensions;
+            obj.kerbWeight = kerbWeight;
+            Object.setPrototypeOf(obj, tataSafari.prototype)
+            return obj;
+        }
+
+        tataSafari.prototype.fuelType = function(){
+            console.log("Diesel")
+        }
+        tataSafari.prototype.transmission = function(){
+            console.log("Manual - 5 Gears")
+        }
+        tataSafari.prototype.safety = function(){
+            console.log("SeatBeltWarning - Yes")
+        }
+        tataSafari.prototype.DoorsWindows = function(){
+            console.log("PowerWindows and Rain sensing Wipers")
+        }
+
+        let obj = tataSafari("GX Dicor", "quartz Black", "BS-4", 6, "4.6m * 1.9m", 2170)
+        let tataSafari2022 = Object.create(obj);
+        tataSafari2022.mileage = function(){
+            console.log("16kmpl")
+        }
+        tataSafari2022.engine = "BS-6";
+        tataSafari2022.enginePower = "167.67 BHP";
+        tataSafari2022.musicSystem = function(){
+        console.log("9-speaker JBL sound system")
+        }
+        tataSafari2022.seats = function(){
+        console.log("Ventilated seats for 1st and 2nd row")
+        }
+        
+        console.log(tataSafari2022.fuelType())
+    </script>
+</body>
+</html>

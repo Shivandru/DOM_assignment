@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMULATION GAME</title>
+</head>
+<body>
+    <script>
+        function Vehicle(brand, model, speed, fuelType){
+            this.brand = brand;
+            this.model = model;
+            this.speed = speed;
+            this.fuelType = fuelType;
+        }
+        Vehicle.prototype.accelerate = function(acc){
+          let  newSpeed = this.speed + acc;
+            return newSpeed;
+        }
+        Vehicle.prototype.brake = function(bra){
+            let newSpeed = this.speed - bra;
+            return newSpeed;
+        }
+        Vehicle.prototype.refuel = function(){
+            console.log("refueling")
+        }
+
+        let car = new Vehicle("tata", "Safari", 50,"Diesel")
+        car.numberOfWheels = 4;
+        car.honk = function(){
+        console.log("Peep...Peep")
+        }
+        
+        function Airplane(brand, model, speed, fuelType, numberOfEngines, hasLandingGear){
+            Vehicle.call(this, brand, model, speed, fuelType);
+            this.numberOfEngines = numberOfEngines;
+            this.hasLandingGear = hasLandingGear;
+        }
+        Airplane.prototype.takeOff = function(){
+            console.log("the airplane is taking off")
+        }
+        Object.setPrototypeOf(Airplane.prototype, Vehicle.prototype)
+
+        let Aircraft = new Airplane("boeing", "AHDL", 500, "aeroFuel", 10, 5)
+        Object.setPrototypeOf(Airplane.prototype, car)
+
+
+        console.log(Aircraft.accelerate(100))
+        console.log(car)
+        console.log(car.accelerate(20))
+        console.log(car.brake(30))
+        car.honk()
+        Aircraft.honk()
+    </script>
+</body>
+</html>
